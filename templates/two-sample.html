@@ -1,0 +1,131 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <!-- Cursor -->
+    <div class="row">
+        <div class="col-xs-12">
+            <p class="lead text-center bg-info btn text-info center-block not-active" >Data has a normal distribution?</p>
+            <div class="row">
+                <div class="col-xs-6 text-center">
+                    <p class="btn not-active" ><span class="glyphicon glyphicon-arrow-down"></span></p>
+                </div>
+                <div class="col-xs-6 text-center">
+                    <p class="btn not-active" ><span class="glyphicon glyphicon-arrow-down"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Evet -->
+        <div class="col-xs-6 text-center">
+            <p class="center-block"><span class="btn btn-success btn-lg not-active" >Yes</span></p>
+            <p class="btn center-block not-active" ><span class="glyphicon glyphicon-arrow-down"></span></p>
+
+            <p class="bg-info text-info btn not-active"  style="width: 100%;">Will the mean be tested?</p>
+            <div class="row">
+                <div class="col-xs-4 text-center">
+                    <p class="btn not-active" ><span class="glyphicon glyphicon-arrow-down"></span>
+                </div>
+                <div class="col-xs-8 text-center">
+                    <p class="btn not-active" ><span class="glyphicon glyphicon-arrow-down"></span></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">
+                    <p class="center-block"><span class="btn btn-success btn-lg not-active" >Yes</span></p>
+                    <p class="btn center-block not-active" ><span class="glyphicon glyphicon-arrow-down"></span></p>
+                    <p class="btn btn-primary">Likelihood-Ratio Tests</p>
+                </div>
+                <div class="col-xs-8">
+                    <p class="bg-info text-info btn not-active"  style="width: 100%;">Are the variables independent?</p>
+                    <div class="row">
+                        <div class="col-xs-10 text-center">
+                            <p class="btn not-active" ><span class="glyphicon glyphicon-arrow-down"></span>
+                        </div>
+                        <div class="col-xs-2 text-center">
+                            <p class="btn not-active" ><span class="glyphicon glyphicon-arrow-down"></span></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-10 text center">
+                            <p class="center-block"><span class="btn btn-success btn-lg not-active" >Yes</span></p>
+                            <p class="btn not-active" ><span class="glyphicon glyphicon-arrow-down"></span>
+                            <p class="bg-info text-info btn text-center not-active"  style="width: 100%;">Are the variances homogeneous?
+                            </p>
+                            <div class="row">
+                                <div class="col-xs-5 text-center">
+                                    <p class="btn not-active" ><span class="glyphicon glyphicon-arrow-down"></span>
+                                </div>
+                                <div class="col-xs-5 text-center">
+                                    <p class="btn not-active" ><span class="glyphicon glyphicon-arrow-down"></span></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-5 text center">
+                                    <p class="center-block"><span class="btn btn-success btn-lg not-active" >Yes</span></p>
+                                    <p class="btn center-block not-active" ><span class="glyphicon glyphicon-arrow-down"></span>
+                                    </p>
+                                    <p class="btn btn-primary">Welch's T-Test </p>
+                                </div>
+                                <div class="col-xs-5 text center">
+                                    <p class="center-block"><span class="btn btn-danger btn-lg not-active" >No</span></p>
+                                    <p class="btn center-block not-active" ><span class="glyphicon glyphicon-arrow-down"></span>
+                                    </p>
+                                    <p class="btn btn-primary style=">Two Sample T-Test</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-2 text center">
+                            <p class="center-block"><span class="btn btn-danger btn-lg not-active" >No</span></p>
+                            <p class="btn center-block not-active" ><span class="glyphicon glyphicon-arrow-down"></span></p>
+                            <p class="btn btn-primary style=">Paired Student’s <br> T-Test </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Hayır -->
+        <div class="col-xs-6 text-center">
+            <p class="center-block"><span class="btn btn-danger btn-lg not-active" >No</span></p>
+            <p class="btn center-block not-active" ><span class="glyphicon glyphicon-arrow-down"></span></p>
+            <p class="bg-info text-info btn not-active"  style="width: 100%;">Will the mean be tested?</p>
+            <div class="row">
+                <div class="col-xs-6 text-center">
+                    <p class="btn not-active" ><span class="glyphicon glyphicon-arrow-down"></span></p>
+                </div>
+                <div class="col-xs-6 text-center">
+                    <p class="btn not-active" ><span class="glyphicon glyphicon-arrow-down"></span></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <p class="center-block"><span class="btn btn-success btn-lg not-active" >Yes</span></p>
+                    <p class="btn center-block not-active" ><span class="glyphicon glyphicon-arrow-down"></span></p>
+                    <p class="btn btn-primary">Two Sample <br> K–S Test</p>
+                </div>
+                <div class="col-xs-6">
+                    <p class="center-block"><span class="btn btn-danger btn-lg not-active" >No</span></p>
+                    <div class="col-xs-12">
+                        <p class="btn center-block not-active" ><span class="glyphicon glyphicon-arrow-down"></span></p>
+                        <p class="lead text-center bg-info btn text-info center-block not-active" >Are the variables independent?</p>
+                        <div class="row">
+                            <div class="col-xs-6 text-center">
+                                <p class="btn not-active" ><span class="glyphicon glyphicon-arrow-down"></span>
+                            </div>
+                            <div class="col-xs-6 text-center">
+                                <p class="btn not-active" ><span class="glyphicon glyphicon-arrow-down"></span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <p class="btn btn-primary">Mann-Whitney <br> U Test</p>
+                    </div>
+                    <div class="col-xs-6">
+                        <p class="btn btn-primary">Wilcoxon  <br> Signed-Rank Test</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

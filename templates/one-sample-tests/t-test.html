@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-xs-2 text-center">
+            <p></p>
+        </div>
+        <div class="col-xs-7 text-center">
+            <h2 class="text-primary border-bottom" id="t-test">T-Test</h2>
+        </div>
+    </div>
+    {% include 'file-upload.html' %}
+
+{#    {% if task == "selected" %}#}
+{#        <select>#}
+{#        <option></option>#}
+{#        </select>#}
+{#    {% else %}#}
+{#        {% include 'file-upload.html' %}#}
+
+{% endblock %}

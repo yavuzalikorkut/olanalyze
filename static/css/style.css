@@ -1,0 +1,16 @@
+.text-wrap {
+    white-space: normal;
+}
+
+.not-active {
+    pointer-events: none !important;
+    cursor: default !important;
+}
+
+.uplBtn {
+    padding: 1px 12px !important;
+}
+
+#t-test {
+    border-bottom: 2px solid #428ACA;
+}
