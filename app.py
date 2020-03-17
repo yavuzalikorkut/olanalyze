@@ -1,5 +1,5 @@
-from flask import Flask, render_template, request
-from utils import helper
+from flask import Flask, render_template
+
 # from flask.ext.babel import Babel
 
 app = Flask(__name__)
@@ -8,13 +8,12 @@ app = Flask(__name__)
 # Load default config and override config from an environment variable
 app.config.update(dict(
     SECRET_KEY='Flask_File_Upload_Example',
-    LANGUAGES = {
-    'en': 'English',
-    'tr': 'Turkish'
+    LANGUAGES={
+        'en': 'English',
+        'tr': 'Turkish'
     }
 ))
 app.config.from_envvar('FLASKR_SETTINGS', silent=True)
-
 
 # @babel.localeselector
 # def get_locale():
@@ -38,18 +37,9 @@ def twosample():
     return render_template('two-sample.html', page=page)
 
 
-@app.route('/t-test')
-def ttest():
-    return render_template('one-sample-tests/t-test.html', task="fileupload")
+from modules.one_sample.t_test.views import blueprint
 
-
-@app.route('/t-test', methods=['POST'])
-def file_upload():
-    return helper.fileUploader(app)
-
-
-def selected_variables():
-    pass
+app.register_blueprint(blueprint)
 
 
 if __name__ == '__main__':
