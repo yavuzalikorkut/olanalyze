@@ -26,7 +26,7 @@ def fileUploader(app):
         file.save(os.path.join(UPLOAD_FOLDER, filename))
         flash('File successfully uploaded')
         # df = pd.read_csv(sessiondan dosya pathi aldın)
-        columns = ["var1","var2","var3"]
+        columns = ["var1", "var2", "var3"]
         return render_template('one-sample-tests/t-test.html', task="selected", columns=columns)
     else:
         flash('Allowed file types is csv')
