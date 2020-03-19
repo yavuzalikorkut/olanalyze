@@ -4,20 +4,27 @@
 {% block body %}
 
     <div class="row">
-        <div class="col-xs-2 text-center">
-            <p></p>
-        </div>
-        <div class="col-xs-7 text-center">
-            <h2 class="text-primary border-bottom" id="t-test">T-Test</h2>
+    <h2 class="text-primary border-bottom text-center" id="t-test">T-Test</h2>
+        <div class="row">
+            {% if task == "selected" %}
+                <h4>Select the variable(column) which you want to analyze</h4>
+                <form>
+                {% for column in columns %}
+                    <div class="checkbox">
+                        <label><input type="checkbox" value="{{ column }}">{{ column }}</label>
+                    </div>
+                {% endfor %}
+                </form>
+                <input type="submit" value="Submit" class="btn btn-default uplBtn">
+            {% else %}
+                {% include 'file-upload.html' %}
+            {% endif %}
         </div>
     </div>
-    {% include 'file-upload.html' %}
-
-{#    {% if task == "selected" %}#}
-{#        <select>#}
-{#        <option></option>#}
-{#        </select>#}
-{#    {% else %}#}
-{#        {% include 'file-upload.html' %}#}
-
 {% endblock %}
+{% block script %}
+        <script>
+            $(function () {
+            });
+        </script>
+{% endblock script %}

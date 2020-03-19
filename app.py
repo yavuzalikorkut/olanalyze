@@ -39,6 +39,7 @@ def twosample():
 
 from modules.one_sample.t_test.views import blueprint
 
+
 app.register_blueprint(blueprint)
 
 
