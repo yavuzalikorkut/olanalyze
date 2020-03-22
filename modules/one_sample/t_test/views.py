@@ -14,5 +14,10 @@ def ttest():
 
 
 @blueprint.route('/one-sample/t-test', methods=('POST',))
-def file_upload():
+def fileUpload():
     return helper.fileUploader(blueprint)
+
+
+@blueprint.route('/one-sample/t-test/analyze', methods=('POST',))
+def analyze():
+    pass

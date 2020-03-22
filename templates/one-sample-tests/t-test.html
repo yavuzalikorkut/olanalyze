@@ -8,12 +8,13 @@
         <div class="row">
             {% if task == "selected" %}
                 <h4>Select the variable(column) which you want to analyze</h4>
-                <form>
+                <form method="post" action="/one-sample/t-test/analyze">
                 {% for column in columns %}
                     <div class="checkbox">
                         <label><input type="checkbox" value="{{ column }}">{{ column }}</label>
                     </div>
                 {% endfor %}
+
                 </form>
                 <input type="submit" value="Submit" class="btn btn-default uplBtn">
             {% else %}
