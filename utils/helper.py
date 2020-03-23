@@ -25,9 +25,12 @@ def fileUploader(app):
         # session a kaydedince session["FilePath"] = filename
         file.save(os.path.join(UPLOAD_FOLDER, filename))
         flash('File successfully uploaded')
-        # df = pd.read_csv(sessiondan dosya pathi aldın)
-        columns = ["var1", "var2", "var3"]
-        return render_template('one-sample-tests/t-test.html', task="selected", columns=columns)
+        df = pd.read_csv("/Users/yavuzalikorkutustbas/PycharmProjects/stata-onl/static/uploads/{}".format(filename))
+        table = df.head()
+        tablelist = table.values.tolist()
+        content = {'f': tablelist}
+        columns = df.columns
+        return render_template('one-sample-tests/t-test.html', task="selected", columns=columns, tablelist=content)
     else:
         flash('Allowed file types is csv')
         return redirect(request.url)

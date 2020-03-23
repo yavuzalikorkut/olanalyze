@@ -7,25 +7,70 @@
     <h2 class="text-primary border-bottom text-center" id="t-test">T-Test</h2>
         <div class="row">
             {% if task == "selected" %}
-                <h4>Select the variable(column) which you want to analyze</h4>
-                <form method="post" action="/one-sample/t-test/analyze">
-                {% for column in columns %}
-                    <div class="checkbox">
-                        <label><input type="checkbox" value="{{ column }}">{{ column }}</label>
+                <div class="row">
+                <div class="col-xs-2"></div>
+                <div class="col-xs-8">
+                      <h4>The uploaded data looks like the following</h4>
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                           {% for column in columns %}
+                            <th>{{column}}</th>
+                           {% endfor %}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                          {% for array in f %}
+                          {% for tablelist in array %}
+                            <td>{{ tablelist }}</td>
+                          {% endfor %}
+                          {% endfor %}
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+                </div>
+                <div class="col-xs-2"></div>
+                <div class="col-xs-8">
+                <h4>Select variable (column) which you want to analyze and specify population mean</h4>
+                    <div class="row">
+                        <form method="post" action="/one-sample/t-test/analyze">
+                        <div class="col-xs-8">
+                        {% for column in columns %}
+                            <div class="checkbox">
+                                <label><input class="single-checkbox" type="checkbox" value="{{ column }}">{{ column }}</label>
+                            </div>
+                        {% endfor %}
+                        </div>
+                        <div class="col-xs-4">
+                            <br />
+                            <label>
+                                <input type="number" value="Submit" class="input-group" placeholder="population mean">
+                            </label>
+                            <br />
+                                <input type="submit" value="Submit" class="btn btn-default">
+                        </form>
+                        </div>
                     </div>
-                {% endfor %}
-
-                </form>
-                <input type="submit" value="Submit" class="btn btn-default uplBtn">
             {% else %}
+
                 {% include 'file-upload.html' %}
             {% endif %}
+            </div>
         </div>
     </div>
 {% endblock %}
 {% block script %}
         <script>
             $(function () {
+                let limit = 1;
+                $('#single-checkbox').on('change', function(evt) {
+                   if($(this).siblings(':checked').length >= limit) {
+                       this.checked = false;
+                       alert('as this is one sample test, you can only choose 1 variable')
+                   }
+                });
             });
         </script>
-{% endblock script %}
+{% endblock %}
