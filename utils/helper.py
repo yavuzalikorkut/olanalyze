@@ -1,6 +1,5 @@
 import os
-from flask import request, redirect, flash, render_template
-from werkzeug.utils import secure_filename
+from flask import request, session, redirect, flash, render_template
 import uuid
 import pandas as pd
 
@@ -22,10 +21,10 @@ def fileUploader(app):
         return redirect(request.url)
     if file and allowed_file(file.filename):
         filename = str(uuid.uuid4()) + ".csv"
-        # session a kaydedince session["FilePath"] = filename
+        session["FilePath"] = filename
         file.save(os.path.join(UPLOAD_FOLDER, filename))
         flash('File successfully uploaded')
-        df = pd.read_csv("/Users/yavuzalikorkutustbas/PycharmProjects/stata-onl/static/uploads/{}".format(filename))
+        df = pd.read_csv("static/uploads/{}".format(filename))
         table = df.head()
         tablelist = table.values.tolist()
         columns = df.columns
@@ -33,9 +32,3 @@ def fileUploader(app):
     else:
         flash('Allowed file types is csv')
         return redirect(request.url)
-
-
-# def fileName():
-#     file = request.files['file']
-#     fname = file.filename
-#     return fname
