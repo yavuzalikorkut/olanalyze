@@ -26,9 +26,21 @@ def fileUploader(app):
         flash('File successfully uploaded')
         df = pd.read_csv("static/uploads/{}".format(filename))
         table = df.head()
+        datatitles = df.columns
+        # TODO row count validation
+        # if table.count() < 10:
+        #     return render_template('one-sample-tests/t-test.html', error="please enter daha has 5 row at least")
+        # value validation
         tablelist = table.values.tolist()
-        columns = df.columns
-        return render_template('one-sample-tests/t-test.html', task="selected", columns=columns, tablelist=tablelist)
+        columns = []
+        for i, value in enumerate(tablelist[0]):
+            try:
+                float(value)
+                columns.append(df.columns[i])
+            except:
+                pass
+        return render_template('one-sample-tests/t-test.html', task="selected", columns=columns, tablelist=tablelist,
+                               datatitles=datatitles, error='')
     else:
         flash('Allowed file types is csv')
         return redirect(request.url)
