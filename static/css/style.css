@@ -14,3 +14,8 @@
 #t-test {
     border-bottom: 2px solid #428ACA;
 }
+
+p.content{
+    font-size: 150% !important;
+    display: block;
+}

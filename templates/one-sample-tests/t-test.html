@@ -56,8 +56,24 @@
                     </div>
 
             {% else %}
-
                 {% include 'file-upload.html' %}
+                <div class="row">
+                    <br />
+                            <p class="content">
+                            The single sample t-test is used to compare a sample mean with a known value. This value is
+                            generally the population mean (parameter). While the sample mean is the observed value,
+                            the population average is the expected value.
+                            <br />
+                            This test is useful when we want to know if the sample is taken from a particular population.
+                            <br />
+                            </p>
+                            <h2> Hypotheses</h2>
+                            <p class="content">
+                             HO: There is no significant difference between sample mean and population mean.
+                            <br />
+                             H1: There is a significant difference between sample mean and population mean.
+                            </p>
+                </div>
             {% endif %}
             </div>
         </div>
