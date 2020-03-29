@@ -1,36 +1,40 @@
-<div class="row">
-    <div class="col-xs-2">
-    </div>
-    <div class="col-xs-10">
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-xs-2">
+            </div>
+            <div class="col-xs-10">
 
-            <h4>Select a csv file to upload and analyze</h4>
-            <p>
-                {% with messages = get_flashed_messages() %}
-                  {% if messages %}
-                    <ul class=flashes>
-                    {% for message in messages %}
-                      <li>{{ message }}</li>
-                    {% endfor %}
-                    </ul>
-                  {% endif %}
-                {% endwith %}
-            </p>
+                <h4>Select a csv file to upload and analyze</h4>
+                <p>
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            <ul class=flashes>
+                                {% for message in messages %}
+                                    <li>{{ message }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    {% endwith %}
+                </p>
 
-            <form method="post" action="/one-sample/t-test" enctype="multipart/form-data">
-                <div class="row">
-                    <div class="col-xs-4 text-center">
-                        <dl>
+                <form method="post" action="/one-sample/t-test" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-xs-4 text-center">
+                            <dl>
+                                <p>
+                                    <input type="file" name="file" autocomplete="off" required>
+                                </p>
+                            </dl>
+                        </div>
+                        <div class="col-xs-8 text-center">
                             <p>
-                                <input type="file" name="file" autocomplete="off" required>
+                                <input class="btn btn-primary uplBtn" type="submit" value="Submit" id="uplBtn">
                             </p>
-                        </dl>
+                        </div>
                     </div>
-                    <div class="col-xs-8 text-center">
-                        <p>
-                            <input class="btn btn-primary uplBtn" type="submit" value="Submit" id="uplBtn">
-                        </p>
-                    </div>
-                </div>
-            </form>
+                </form>
+            </div>
+        </div>
     </div>
 </div>

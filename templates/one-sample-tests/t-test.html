@@ -4,75 +4,83 @@
 {% block body %}
 
     <div class="row">
-    <h2 class="text-primary border-bottom text-center" id="t-test">T-Test</h2>
-{#        {% if error!='' %}#}
+        <h2 class="text-primary border-bottom text-center" id="t-test">T-Test</h2>
+        {#        {% if error!='' %}#}
         <div class="row">
             {% if task == "selected" %}
                 <div class="row">
-                <div class="col-xs-2"></div>
-                <div class="col-xs-8">
-                      <h4>The uploaded data looks like below</h4>
-                      <table class="table table-striped">
-                        <thead>
-                          <tr>
-                           {% for datatitle in datatitles %}
-                            <th>{{datatitle}}</th>
-                           {% endfor %}
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {% for array in tablelist %}
-                              <tr>
-                          {% for content in array %}
-                            <td>{{ content }}</td>
-                          {% endfor %}
-                              </tr>
-                          {% endfor %}
-                        </tbody>
-                      </table>
-                </div>
+                    <div class="col-xs-2"></div>
+                    <div class="col-xs-8">
+                        <h4>The uploaded data looks like below</h4>
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                {% for datatitle in datatitles %}
+                                    <th>{{ datatitle }}</th>
+                                {% endfor %}
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for array in tablelist %}
+                                <tr>
+                                    {% for content in array %}
+                                        <td>{{ content }}</td>
+                                    {% endfor %}
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <div class="col-xs-2"></div>
                 <div class="col-xs-8">
                 <h4>Select variable (column) which you want to analyze and specify population mean</h4>
-                    <div class="row">
-                        <form method="POST" action="/one-sample/t-test/result" id="form-t-test">
+                <div class="row">
+                    <form method="POST" action="/one-sample/t-test/result" id="form-t-test">
                         <div class="col-xs-8">
-                        {% for column in columns %}
-                            <div class="checkbox">
-                                <label><input class="single-checkbox" type="checkbox" name="varcheckbox"  value="{{ column }}">{{ column }} </label>
-                            </div>
-                        {% endfor %}
+                            {% for column in columns %}
+                                <div class="checkbox">
+                                    <label><input class="single-checkbox" type="checkbox" name="varcheckbox"
+                                                  value="{{ column }}">{{ column }} </label>
+                                </div>
+                            {% endfor %}
                         </div>
                         <div class="col-xs-4">
-                            <br />
+                            <br/>
                             <label>
-                                <input type="number" required value="Submit" min="0" step="0.01" class="input-group" placeholder="population mean" name="popmean">
+                                <input type="number" required value="Submit" min="0" step="0.01" class="input-group"
+                                       placeholder="population mean" name="popmean">
                             </label>
-                            <br />
-                                <input type="submit" value="Submit" class="btn btn-default">
+                            <br/>
+                            <input type="submit" value="Submit" class="btn btn-default">
                         </div>
-                        </form>
-                    </div>
+                    </form>
+                </div>
 
             {% else %}
                 {% include 'file-upload.html' %}
-                <div class="row">
-                    <br />
-                            <p class="content">
-                            The single sample t-test is used to compare a sample mean with a known value. This value is
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h4>Definition</h4>
+                        <p>
+                            The one sample t-test is used to compare a sample mean with a known value. This value is
                             generally the population mean (parameter). While the sample mean is the observed value,
                             the population average is the expected value.
-                            <br />
-                            This test is useful when we want to know if the sample is taken from a particular population.
-                            <br />
-                            </p>
-                            <h2> Hypotheses</h2>
-                            <p class="content">
-                             HO: There is no significant difference between sample mean and population mean.
-                            <br />
-                             H1: There is a significant difference between sample mean and population mean.
-                            </p>
+                            This test is useful when we want to know if the sample is taken from a particular
+                            population.
+                            <br/>
+                        </p>
+                        <h4>Hypotheses</h4>
+                        H0: There is no significant difference between sample mean and population mean. <br>
+                        H1: There is a significant difference between sample mean and population mean.
+                        <h4>Assumptions</h4>
+                        <p>
+                            • The dependent variable must be continuous. <br>
+                            • The observations are independent of one another. <br>
+                            • The dependent variable should be approximately normally distributed. <br>
+                            • The dependent variable should not contain any outliers. <br>
+                        </p>
+                    </div>
                 </div>
             {% endif %}
             </div>
@@ -80,24 +88,24 @@
     </div>
 {% endblock %}
 {% block script %}
-        <script>
-            $(function () {
-                let limit = 1;
-                $('.single-checkbox').change(function(evt) {
-                   if($('.single-checkbox:checked').length > limit) {
-                       $(this).attr('checked', false);
-                       alert('this is one sample test, you can only select 1 variable');
-                   }
-                });
-
-                $('#form-t-test').submit(function (evt) {
-                    if($('.single-checkbox:checked').length > 0) {
-                        return;
-                    } else{
-                        evt.preventDefault();
-                        alert('this is one sample test, you have to select 1 variable');
-                    }
-                })
+    <script>
+        $(function () {
+            let limit = 1;
+            $('.single-checkbox').change(function (evt) {
+                if ($('.single-checkbox:checked').length > limit) {
+                    $(this).attr('checked', false);
+                    alert('this is one sample test, you can only select 1 variable');
+                }
             });
-        </script>
+
+            $('#form-t-test').submit(function (evt) {
+                if ($('.single-checkbox:checked').length > 0) {
+                    return;
+                } else {
+                    evt.preventDefault();
+                    alert('this is one sample test, you have to select 1 variable');
+                }
+            })
+        });
+    </script>
 {% endblock %}
