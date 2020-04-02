@@ -9,12 +9,13 @@ blueprint = Blueprint('ttest', __name__)
 
 @blueprint.route('/one-sample/t-test')
 def ttest():
-    return render_template('one-sample-tests/t-test.html')
+    return render_template('one-sample-tests/t-test/t-test.html')
 
 
 @blueprint.route('/one-sample/t-test', methods=('POST',))
 def fileUpload():
-    return helper.fileUploader(blueprint)
+    url = 'one-sample-tests/t-test/t-test.html'
+    return helper.fileUploader(blueprint, url)
 
 
 @blueprint.route('/one-sample/t-test/result', methods=('POST',))
@@ -31,4 +32,4 @@ def ttestResult(alpha=0.05, alternative='greater'):
         h0 = 'Reject Null Hypothesis for greater-than test'
     if alternative == 'less' and (p/2 < alpha) and t < 0:
         h0 = 'Reject Null Hypothesis for less-thane test'
-    return render_template('one-sample-tests/t-test-result.html', h0=h0)
+    return render_template('one-sample-tests/t-test/t-test-result.html', h0=h0)

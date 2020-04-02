@@ -11,7 +11,7 @@ def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
-def fileUploader(app):
+def fileUploader(app, url):
     if 'file' not in request.files:
         flash('No file part')
         return redirect(request.url)
@@ -39,7 +39,7 @@ def fileUploader(app):
                 columns.append(df.columns[i])
             except:
                 pass
-        return render_template('one-sample-tests/t-test.html', task="selected", columns=columns, tablelist=tablelist,
+        return render_template('{}'.format(url), task="selected", columns=columns, tablelist=tablelist,
                                datatitles=datatitles, error='')
     else:
         flash('Allowed file types is csv')
