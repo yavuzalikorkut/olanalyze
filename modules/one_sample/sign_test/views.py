@@ -8,7 +8,7 @@ blueprint = Blueprint('signtest', __name__)
 
 
 @blueprint.route('/one-sample/sign-test')
-def ttest():
+def signtest():
     return render_template('one-sample-tests/sign-test/sign-test.html')
 
 
