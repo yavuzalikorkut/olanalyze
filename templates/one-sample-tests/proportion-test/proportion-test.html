@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+
+{% block body %}
+    <div class="row">
+        <h2 class="text-primary border-bottom text-center" id="t-test">Proportion Test</h2>
+        <div class="row">
+            {% if task == "selected" %}
+                <div class="col-xs-2"></div>
+                <div class="col-xs-8">
+                <h4>specify count, nobs, alternative, prop_varFalse</h4>
+                {# get these value from user and figure out whether file upload is necessary or unnecessary #}
+                <div class="row">
+                    <form method="POST" action="/one-sample/proportion-test/result" id="form-proportion-test">
+                        <div class="col-xs-8">
+                            {% for column in columns %}
+                                <div class="checkbox">
+                                    <label><input class="single-checkbox" type="checkbox" name="varcheckbox"
+                                                  value="{{ column }}">{{ column }} </label>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div class="col-xs-4">
+                            <br/>
+                            <input type="submit" value="Submit" class="btn btn-default">
+                        </div>
+                    </form>
+                </div>
+
+            {% else %}
+                {% include 'file-upload.html' %}
+
+            {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}

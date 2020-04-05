@@ -49,6 +49,10 @@ from modules.one_sample.binomial_test.views import blueprint
 
 app.register_blueprint(blueprint)
 
+from modules.one_sample.proportion_test.views import blueprint
+
+app.register_blueprint(blueprint)
+
 
 if __name__ == '__main__':
     app.run()
