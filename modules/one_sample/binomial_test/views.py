@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from flask import Blueprint, render_template, request, session
 from utils import helper
 from scipy import stats
@@ -26,5 +25,3 @@ def binomialtestResult():
     p = request.form.get('p')
     pvalue = stats.binom_test(int(x), int(n), float(p))
     return render_template('one-sample-tests/binomial-test/binomial-test-result.html', p=pvalue)
-=======
->>>>>>> parent of ebdaec7... add one sample binomial test
