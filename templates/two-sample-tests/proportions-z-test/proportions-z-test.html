@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+
+
+{% block body %}
+    <div class="row">
+        <h2 class="text-primary border-bottom text-center" id="proportions-z-test">Proportions Z Test</h2>
+        <div class="row">
+            <form method="POST" action="/two-sample/proportions-z-test/result" id="form-proportions-z-test">
+                <div class="col-xs-8">
+                            <h4> Please specify counts and nobs </h4>
+                            <br/>
+                            <label>
+                                <input type="number" required value="Submit" min="0" step="0.01" class="input-group"
+                                       placeholder="nob1" name="nob1">
+                            </label>
+                            <br/>
+                            <label>
+                                <input type="number" required value="Submit" min="0" step="0.01" class="input-group"
+                                       placeholder="nob2" name="nob2">
+                            </label>
+                            <br/>
+                            <label>
+                                <input type="number" required value="Submit" min="0" step="0.01" class="input-group"
+                                       placeholder="count1" name="count1">
+                            </label>
+                            <br/>
+                            <label>
+                                <input type="number" required value="Submit" min="0" step="0.01" class="input-group"
+                                       placeholder="count2" name="count2">
+                            </label>
+                            <br/>
+                            <br/>
+                            <input type="submit" value="Submit" class="btn btn-default">
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}

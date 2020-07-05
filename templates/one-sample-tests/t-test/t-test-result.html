@@ -1,7 +1,20 @@
 {% extends 'layout.html' %}
 
-
 {% block body %}
-    {{ h0 }}
-    <br />
+    <div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Result of The Test</div>
+
+  <!-- Table -->
+  <table class="table">
+      <tr>
+            <th> t-statistic </th>
+            <th> two-tailed p-value </th>
+      </tr>
+       <tr>
+            <td>{{ t }}</td>
+            <td>{{ p }}</td>
+        </tr>
+  </table>
+</div>
 {% endblock %}

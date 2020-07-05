@@ -8,7 +8,7 @@ blueprint = Blueprint('signtest', __name__)
 
 
 @blueprint.route('/one-sample/sign-test')
-def signtest():
+def ttest():
     return render_template('one-sample-tests/sign-test/sign-test.html')
 
 
@@ -20,9 +20,9 @@ def fileUpload():
 
 @blueprint.route('/one-sample/sign-test/result', methods=('POST',))
 def signtestResult():
-    variable = request.form.getlist('varcheckbox')
+    variable = request.form.getlist('varcheckbox[]')
     file = session["FilePath"]
     df = pd.read_csv("static/uploads/{}".format(file))
-    selectedvars = df[variable].shape
-    t, p = stats.wilcoxon(selectedvars)
+    selectedvars = df[variable].values
+    t, p = stats.wilcoxon(selectedvars[0])
     return render_template('one-sample-tests/sign-test/sign-test-result.html', t=t, p=p)

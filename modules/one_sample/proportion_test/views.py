@@ -8,7 +8,7 @@ blueprint = Blueprint('proportiontest', __name__)
 
 
 @blueprint.route('/one-sample/proportion-test')
-def signtest():
+def proportiontest():
     return render_template('one-sample-tests/proportion-test/proportion-test.html')
 
 
@@ -20,8 +20,8 @@ def fileUpload():
 
 @blueprint.route('/one-sample/proportion-test/result', methods=('POST',))
 def proportiontestResult():
-    count = np.array([5, 12])
-    nobs = np.array([83, 99])
-    stat, pval = proportions_ztest(count, nobs)
-    a = ('{0:0.3f}'.format(pval))
-    return render_template('one-sample-tests/proportion-test/proportion-test-result.html', stat=stat, pval=pval)
+    count = request.form.get('count')
+    nob = request.form.get('nob')
+    value = request.form.get('value')
+    stat, pval = proportions_ztest(float(count), float(nob), float(value))
+    return render_template('one-sample-tests/proportion-test/proportion-test-result.html', z=stat, p=pval)

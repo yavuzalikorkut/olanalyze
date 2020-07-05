@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Result of The Test</div>
+
+  <!-- Table -->
+  <table class="table">
+      <tr>
+            <th>Statistic</th>
+            <th>Significance level</th>
+            <th>Critical Values</th>
+      </tr>
+       <tr>
+            <td>{{ stat }}</td>
+            <td>{{ sl }}</td>
+           <td>{{ cv }}</td>
+        </tr>
+  </table>
+</div>
+{% endblock %}

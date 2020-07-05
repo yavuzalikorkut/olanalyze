@@ -1,5 +1,18 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-    {{ t }}
+    <div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Result of The Test</div>
+
+  <!-- Table -->
+  <table class="table">
+      <tr>
+            <th>Two-sided p-value</th>
+      </tr>
+       <tr>
+            <td>{{ p }}</td>
+        </tr>
+  </table>
+</div>
 {% endblock %}

@@ -1,0 +1,83 @@
+{% extends 'layout.html' %}
+
+
+{% block body %}
+    <div class="row">
+        <h2 class="text-primary border-bottom text-center" id="anderson-darling-test">Normality Anderson-Darling Test</h2>
+        <div class="row">
+            {% if task == "selected" %}
+                <div class="row">
+                    <div class="col-xs-2"></div>
+                    <div class="col-xs-8">
+                        <h4>The uploaded data looks like below</h4>
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                {% for datatitle in datatitles %}
+                                    <th>{{ datatitle }}</th>
+                                {% endfor %}
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for array in tablelist %}
+                                <tr>
+                                    {% for content in array %}
+                                        <td>{{ content }}</td>
+                                    {% endfor %}
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-xs-2"></div>
+                <div class="col-xs-8">
+                <h4>Select variable (column) which you want to test normality</h4>
+                <div class="row">
+                    <form method="POST" action="/normality/anderson-darling-test/result" id="form-normality-anderson-darling-test">
+                        <div class="col-xs-8">
+                            {% for column in columns %}
+                                <div class="checkbox">
+                                    <label><input class="single-checkbox" type="checkbox" name="varcheckbox[]"
+                                                  value="{{ column }}">{{ column }} </label>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div class="col-xs-4">
+                            <br/>
+                            <input type="submit" value="Submit" class="btn btn-default">
+                        </div>
+                    </form>
+                </div>
+
+            {% else %}
+                {% include 'file-upload.html' %}
+
+            {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+<script>
+        $(function () {
+            let limit = 1;
+            $('.single-checkbox').change(function (evt) {
+                if ($('.single-checkbox:checked').length > limit) {
+                    $(this).attr('checked', false);
+                    alert('you can only select 1 variable');
+                }
+            });
+
+            $('#form-normality-anderson-darling-test').submit(function (evt) {
+                if ($('.single-checkbox:checked').length > 0) {
+                    return;
+                } else {
+                    evt.preventDefault();
+                    alert('you have to select 1 variable');
+                }
+            });
+        });
+    </script>
+{% endblock %}

@@ -27,9 +27,4 @@ def ttestResult(alpha=0.05, alternative='greater'):
     df = pd.read_csv("static/uploads/{}".format(file))
     selectedvar = df[variables]
     t, p = stats.ttest_1samp(selectedvar, popmeannumeric)
-    h0 = ' '  # define here otherwise unreachable for this scope
-    if alternative == 'greater' and (p/2 < alpha) and t > 0:
-        h0 = 'Reject Null Hypothesis for greater-than test'
-    if alternative == 'less' and (p/2 < alpha) and t < 0:
-        h0 = 'Reject Null Hypothesis for less-thane test'
-    return render_template('one-sample-tests/t-test/t-test-result.html', h0=h0)
+    return render_template('one-sample-tests/t-test/t-test-result.html', t=t, p=p)

@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <!-- Cursor -->
+    <div class="row">
+        <div class="col-xs-12">
+            <p class="lead text-center bg-info btn text-info center-block not-active">Will the data be distributed normally?</p>
+        </div>
+    </div>
+
+    <div class="row">
+            <div class="row">
+
+            </div>
+            <div class="row">
+                <div class="col-xs-4">
+                    <p class="btn center-block not-active" ><span class="glyphicon glyphicon-arrow-down"></span></p>
+                    <p> <a href="/normality/ks-test" class="btn btn-primary center-block"> KS Test </a></p>
+                </div>
+                <div class="col-xs-4">
+                    <p class="btn center-block not-active" ><span class="glyphicon glyphicon-arrow-down"></span></p>
+                    <p> <a href="/normality/shapiro-wilk-test" class="btn btn-primary center-block"> Shapiro-Wilk </a></p>
+                </div>
+                <div class="col-xs-4">
+                    <p class="btn center-block not-active" ><span class="glyphicon glyphicon-arrow-down"></span></p>
+                    <p> <a href="/normality/anderson-darling" class="btn btn-primary center-block"> Anderson-Darling </a></p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

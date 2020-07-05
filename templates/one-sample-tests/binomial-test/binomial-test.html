@@ -3,57 +3,31 @@
 
 {% block body %}
     <div class="row">
-        <h2 class="text-primary border-bottom text-center" id="t-test">Binomial Test</h2>
+        <h2 class="text-primary border-bottom text-center" id="binomial-test">Binomial Test</h2>
         <div class="row">
-            {% if task == "selected" %}
-                <div class="row">
-                    <div class="col-xs-2"></div>
-                    <div class="col-xs-8">
-                        <h4>The uploaded data looks like below</h4>
-                        <table class="table table-striped">
-                            <thead>
-                            <tr>
-                                {% for datatitle in datatitles %}
-                                    <th>{{ datatitle }}</th>
-                                {% endfor %}
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {% for array in tablelist %}
-                                <tr>
-                                    {% for content in array %}
-                                        <td>{{ content }}</td>
-                                    {% endfor %}
-                                </tr>
-                            {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="col-xs-2"></div>
+            <form method="POST" action="/one-sample/binomial-test/result" id="form-binomial-test">
                 <div class="col-xs-8">
-                <h4>Select variable (column) which you want to analyze and specify population mean</h4>
-                <div class="row">
-                    <form method="POST" action="/one-sample/binomial-test/result" id="form-binomial-test">
-                        <div class="col-xs-8">
-                            {% for column in columns %}
-                                <div class="checkbox">
-                                    <label><input class="single-checkbox" type="checkbox" name="varcheckbox"
-                                                  value="{{ column }}">{{ column }} </label>
-                                </div>
-                            {% endfor %}
-                        </div>
-                        <div class="col-xs-4">
+                            <h4> Please specify count, nob and value (value must be float) </h4>
+                            <br/>
+                            <label>
+                                <input type="number" required value="Submit" min="0" step="1" class="input-group"
+                                       placeholder="number of successes" name="x">
+                            </label>
+                            <br/>
+                            <label>
+                                <input type="number" required value="Submit" min="0" step="1" class="input-group"
+                                       placeholder="number of trials" name="n">
+                            </label>
+                            <br/>
+                            <label>
+                                <input type="number" required value="Submit" min="0" max="1" step="0.001" class="input-group"
+                                       placeholder="probability of success" name="p">
+                            </label>
+                            <br/>
                             <br/>
                             <input type="submit" value="Submit" class="btn btn-default">
-                        </div>
-                    </form>
                 </div>
-
-            {% else %}
-                {% include 'file-upload.html' %}
-
-            {% endif %}
+            </form>
             </div>
         </div>
     </div>

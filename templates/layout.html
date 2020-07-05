@@ -9,11 +9,15 @@
     <link rel="stylesheet" href="/static/css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 </head>
 
 <body>
-<a href="https://github.com/yavuzalikorkut/olanalyze" class="github-corner" aria-label="View source on GitHub" target="_blank">
+<a href="https://github.com/yavuzalikorkut/olanalyze" class="github-corner" aria-label="View source on GitHub"
+   target="_blank">
     <svg width="80" height="80" viewBox="0 0 250 250"
          style="fill:#428ACA; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
         <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
@@ -52,10 +56,13 @@
 <div class="container">
     <br/>
     <ul class="nav nav-tabs ">
-        <li role="presentation"><a href="/"><h4> OLANALYZE <img src="/static/img/analytics.svg" height="20" width="30" alt="">   </h4></a></li>
-        <li role="presentation" class="{{ 'active' if page=='onesample' else '' }}"><a href="one-sample"><h4>One Sample Tests</h4></a></li>
-        <li role="presentation" class="{{ 'active' if page=='twosample' else '' }}"><a href="two-sample"><h4>Two Sample Tests</h4></a></li>
-        {#<li role="presentation" class="#"><a href="#"><h4>More Than Two Sample Tests</h4></a></li>#}
+        <li role="presentation"><a href="/"><h4> OLANALYZE <img src="/static/img/analytics.svg" height="20" width="30"
+                                                                alt=""></h4></a></li>
+        <li role="presentation" class="{{ 'active' if page=='normality' else '' }}"><a href="/normality"><h4>Normality Tests</h4></a></li>
+        <li role="presentation" class="{{ 'active' if page=='onesample' else '' }}"><a href="/one-sample"><h4>One Sample
+            Tests</h4></a></li>
+        <li role="presentation" class="{{ 'active' if page=='twosample' else '' }}"><a href="/two-sample"><h4>Two Sample
+            Tests</h4></a></li>
     </ul>
 
     <br/>
@@ -63,7 +70,7 @@
 
     {% block body %}{% endblock %}
 </div>
-    {% block script %}{% endblock %}
+{% block script %}{% endblock %}
 </body>
 
 </html>
