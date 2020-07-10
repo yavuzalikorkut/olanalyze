@@ -4,8 +4,7 @@
 [![PyPI](https://img.shields.io/pypi/pyversions/scipy)](https://pypi.org/project/scipy/)
 ![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/yavuzalikorkut/olanalyze)
 
-[Olanalyze](https://olanalyze.herokuapp.com/) is a web app that will enable statistical hypothesis testing. This app has been developed for correct test selection with flow chart.
-This web app based on [flask](https://flask.palletsprojects.com/en/1.1.x/) and uses [scipy.stats](https://docs.scipy.org/doc/scipy/reference/stats.html) for statistical tests.
+[Olanalyze](https://olanalyze.herokuapp.com/) is a web app that will enable statistical hypothesis testing. This app has been developed for correct test selection with flow chart. It based on [flask](https://flask.palletsprojects.com/en/1.1.x/) and uses [scipy.stats](https://docs.scipy.org/doc/scipy/reference/stats.html) for statistical tests.
 
 ## Installation
 
